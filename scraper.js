@@ -34,6 +34,7 @@ function getRandomInt(max) {
 function fetchPage(url, callback) {
 	var useragents = [ 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Safari/605.1.15', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.1 Safari/605.1.15', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.59.10 (KHTML, like Gecko) Version/5.1.9 Safari/534.59.10', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Safari/605.1.15' ];
 	var useragent = useragents[getRandomInt(useragents.length)];
+	console.log(useragent);
 	var options = {
   		url: url,
   		headers: {
@@ -57,17 +58,11 @@ function scrapper(db, site, code) {
 		try {
 			fetchPage(site, function(body) {
 			try {
-				//var json = body.split('window["ytInitialData"] = ').pop().split('window["ytInitialPlayerResponse"]')[0];
-				//json = json.replace('}}]}}}}}}};','}}]}}}}}}}');
-				//var jsonData = JSON.parse(json);
-				//var link = jsonData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.subMenu.channelListSubMenuRenderer.contents[0].channelListSubMenuAvatarRenderer.navigationEndpoint.commandMetadata.webCommandMetadata.url;
-				var regex = /4gIuCggvbS8wNHJ\s(.*)\webPageType/g;
-				var m,results = [];
-				while(m=regex.exec(body)) {
-  					results.push(m[1]);
-				}
-				var link = results.join();
-				var linkData = 'https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJ' + link;
+				var json = body.split('window["ytInitialData"] = ').pop().split('window["ytInitialPlayerResponse"]')[0];
+				json = json.replace('}}]}}}}}}};','}}]}}}}}}}');
+				var jsonData = JSON.parse(json);
+				var link = jsonData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.subMenu.channelListSubMenuRenderer.contents[0].channelListSubMenuAvatarRenderer.navigationEndpoint.commandMetadata.webCommandMetadata.url;
+				var linkData = 'https://www.youtube.com' + link;
 				console.log()
 				console.log(linkData);
 				updateRow(db, code, linkData);
