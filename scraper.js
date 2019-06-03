@@ -62,7 +62,7 @@ function scrapper(db, site, code) {
 				//var jsonData = JSON.parse(json);
 				//var link = jsonData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.subMenu.channelListSubMenuRenderer.contents[0].channelListSubMenuAvatarRenderer.navigationEndpoint.commandMetadata.webCommandMetadata.url;
 				var regex = /bp=4gIuCggvbS8wNHJ\s(.*)\webPageType/g;
-				var link = body.match(regex)[1];
+				var link = body.match(regex)[0];
 				var linkData = 'https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJ' + link;
 				console.log()
 				console.log(linkData);
