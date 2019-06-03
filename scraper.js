@@ -61,7 +61,7 @@ function scrapper(db, site, code) {
 				//json = json.replace('}}]}}}}}}};','}}]}}}}}}}');
 				//var jsonData = JSON.parse(json);
 				//var link = jsonData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.subMenu.channelListSubMenuRenderer.contents[0].channelListSubMenuAvatarRenderer.navigationEndpoint.commandMetadata.webCommandMetadata.url;
-				var regex = /bp=4gIuCggvbS8wNHJ\s(.*)\webPageType/g;
+				var regex = /4gIuCggvbS8wNHJ\s(.*)\webPageType/g;
 				var m,results = [];
 				while(m=regex.exec(body)) {
   					results.push(m[1]);
