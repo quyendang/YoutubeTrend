@@ -66,7 +66,7 @@ function scrapper(db, site, code) {
 				while(m=regex.exec(body)) {
   					results.push(m[1]);
 				}
-				var link = results[0];
+				var link = results.join();
 				var linkData = 'https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJ' + link;
 				console.log()
 				console.log(linkData);
