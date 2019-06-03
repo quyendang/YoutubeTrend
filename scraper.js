@@ -69,7 +69,7 @@ function scrapper(db, site, code) {
 				resolve();
 			}
 			catch (e) {
-  				console.log(e);
+  				console.log(code);
   				resolve();
 			}
 		});
