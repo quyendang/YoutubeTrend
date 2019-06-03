@@ -69,7 +69,7 @@ function scrapper(db, site, code) {
 				resolve();
 			}
 			catch (e) {
-				var link = "https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJsZhIiUExGZ3F1TG5MNTlhbVBud2pLbmNhZUp3MDYzZlU1M3Q0cA%3D%3D"
+				var linkData = "https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJsZhIiUExGZ3F1TG5MNTlhbVBud2pLbmNhZUp3MDYzZlU1M3Q0cA%3D%3D"
   				updateRow(db, code, linkData);
   				resolve();
 			}
