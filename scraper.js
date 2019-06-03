@@ -61,7 +61,8 @@ function scrapper(db, site, code) {
 				//json = json.replace('}}]}}}}}}};','}}]}}}}}}}');
 				//var jsonData = JSON.parse(json);
 				//var link = jsonData.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.subMenu.channelListSubMenuRenderer.contents[0].channelListSubMenuAvatarRenderer.navigationEndpoint.commandMetadata.webCommandMetadata.url;
-				var link = body.split('?bp=4gIuCggvbS8wNHJ').pop().split('","')[0];
+				var regex = /bp=4gIuCggvbS8wNHJ\s(.*)\"/g;
+				var link = body.match(regex)[1];
 				var linkData = 'https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJ' + link;
 				console.log()
 				console.log(linkData);
